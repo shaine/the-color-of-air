@@ -1,4 +1,8 @@
-# the-color-of-air [![Build Status](https://travis-ci.org/boneskull/the-color-of-air.svg?branch=master)](https://travis-ci.org/boneskull/the-color-of-air)
+# the-color-of-air-continuous
+
+**Fork of [the-color-of-air](https://github.com/boneskull/the-color-of-air)**
+intended to add support for continuous color selection, rather than just picking
+from a static list.
 
 <img src="https://cldup.com/-1AEd2IfBy.png" title="swatches" alt="swatches" width="586" height="46"/>
 

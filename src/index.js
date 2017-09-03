@@ -12,36 +12,36 @@
  * @throws {ReferenceError} When unknown `scaleName`
  */
 export function colorOfAir (scaleName, degrees) {
-  if (!arguments.length) {
-    return colorOfAir;
-  }
+    if (!arguments.length) {
+        return colorOfAir;
+    }
 
-  if (arguments.length === 1) {
-    return colorOfAir.bind(null, scaleName);
-  }
+    if (arguments.length === 1) {
+        return colorOfAir.bind(null, scaleName);
+    }
 
-  if (!(typeof scaleName === 'string' && scaleName.length)) {
-    throw new TypeError(`'scaleName' argument must be a nonempty string`);
-  }
+    if (!(typeof scaleName === 'string' && scaleName.length)) {
+        throw new TypeError(`'scaleName' argument must be a nonempty string`);
+    }
 
-  degrees = parseFloat(degrees);
-  if (isNaN(degrees)) {
-    throw new TypeError(`'degrees' argument "${degrees}" cannot be coerced to float`);
-  }
+    degrees = parseFloat(degrees);
+    if (isNaN(degrees)) {
+        throw new TypeError(`'degrees' argument "${degrees}" cannot be coerced to float`);
+    }
 
-  scaleName = scaleName.toLowerCase();
-  if (!scales[scaleName]) {
-    throw new ReferenceError(`unknown scale "${scaleName}"`);
-  }
+    scaleName = scaleName.toLowerCase();
+    if (!scales[scaleName]) {
+        throw new ReferenceError(`unknown scale "${scaleName}"`);
+    }
 
-  const tempScale = scales[scaleName];
-  const colorIndex = Math.round(scale(degrees,
-    tempScale.min,
-    tempScale.max,
-    0,
-    scaleMax));
+    const tempScale = scales[scaleName];
+    const colorIndex = Math.round(scale(degrees,
+        tempScale.min,
+        tempScale.max,
+        0,
+        scaleMax));
 
-  return colorList[colorIndex];
+    return colorList[colorIndex];
 }
 
 /**
@@ -50,19 +50,19 @@ export function colorOfAir (scaleName, degrees) {
  * @type {string[]}
  */
 export const colorList = [
-  '#feffff',
-  '#d1c9df',
-  '#a496c0',
-  '#3993ce',
-  '#0772b8',
-  '#03902b',
-  '#2dc558',
-  '#fecf3b',
-  '#ec9800',
-  '#dd531e',
-  '#c53600',
-  '#b10909',
-  '#6f0015'
+    '#feffff',
+    '#d1c9df',
+    '#a496c0',
+    '#3993ce',
+    '#0772b8',
+    '#03902b',
+    '#2dc558',
+    '#fecf3b',
+    '#ec9800',
+    '#dd531e',
+    '#c53600',
+    '#b10909',
+    '#6f0015'
 ];
 
 const scaleMax = colorList.length;
@@ -80,18 +80,18 @@ const scaleMax = colorList.length;
  * @type {{f: {min: number, max: number}, c: {min: number, max: number}}}
  */
 export const scales = {
-  f: {
-    min: -10,
-    max: 107
-  },
-  c: {
-    min: -23,
-    max: 42
-  }
+    f: {
+        min: -10,
+        max: 107
+    },
+    c: {
+        min: -23,
+        max: 42
+    }
 };
 
 // stolen from https://npm.im/johnny-five
 function scale (value, fromLow, fromHigh, toLow, toHigh) {
-  return ((value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow) |
-    0;
+    return ((value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow) |
+        0;
 }
